@@ -8,14 +8,14 @@ Created on Thu Mar 26 07:37:41 2015
 #LucasCostanzo
 
 import turtle
-from random import randint
+from random import *
 
 window = turtle.Screen()    
 window.bgcolor("red")
 window.title("Jogo Da Forca")
 
 t = turtle.Turtle()  # Cria um objeto "desenhador"
-t.speed(10) 
+t.speed(30) 
 t.penup()       # Remova e veja o que acontece
 t.setpos(-250,-40)
 t.pendown()
@@ -28,33 +28,82 @@ t.right(90)
 t.forward(200)
 t.right(90)
 t.forward(100)
-t.right(90)	#cabeça
-t.circle(30)
-t.left(90)	#corpo
-t.penup()
-t.forward(60)
-t.pendown()
-t.forward(70)
-t.penup()	#braço1
-t.backward(60)
-t.left(45)
-t.pendown()
-t.forward(40)
-t.backward(40)
-t.right(90)	#braço2
-t.forward(40)
-t.backward(40)
-t.left(45)
-t.forward(60)
-t.left(45)	#perna1
-t.forward(40)
-t.backward(40)
-t.right(90)	#perna2
-t.forward(40)
-t.backward(40)
-t.left(45)
 window.mainloop()
 
-#importando palavras
-arquivo = open("texto.txt","r", encoding="utf-8")
-print(arquivo)
+def cabeça():
+	t.right(90)	#cabeça
+	t.circle(30)
+	window.mainloop()
+def corpo():
+	t.left(90)	#corpo
+	t.penup()
+	t.forward(60)
+	t.pendown()
+	t.forward(70)
+	window.mainloop()
+def braco1():
+	t.penup()	#braço1
+	t.backward(60)
+	t.left(45)
+	t.pendown()
+	t.forward(40)
+	t.backward(40)
+	window.mainloop()
+def braco2():
+	t.right(90)	#braço2
+	t.forward(40)
+	t.backward(40)
+	t.left(45)
+	t.forward(60)
+	window.mainloop()
+def perna1():
+	t.left(45)	#perna1
+	t.forward(40)
+	t.backward(40)
+	window.mainloop()
+def perna2():
+	t.right(90)	#perna2
+	t.forward(40)
+	t.backward(40)
+	t.left(45)
+	window.mainloop()
+#variavel_texto = window.textinput("Letra", "Escolha uma letra")	#caixa de texto
+
+t1 = turtle.Turtle()
+t1.speed(30) 
+t1.penup()       # Remova e veja o que acontece
+t1.setpos(-170,-70)
+
+p = open("texto.txt", encoding="utf-8")
+palavra = p.readlines()
+
+limpa = []
+for pa in palavra:
+	x = pa.strip()
+	if x != "":
+		limpa.append(x)
+
+def traço(palavra):
+	for c in palavra:
+		if c ==" ":
+			t1.penup()
+			t1.forward(5)
+			t1.pendown()
+			
+		if c !=" ":
+			t1.pendown()
+			t1.forward(15)
+			t1.penup()
+			t1.forward(5)
+	window.mainloop()
+			
+			
+pc = choice(limpa)
+traço(pc)
+
+
+
+			
+		
+
+	
