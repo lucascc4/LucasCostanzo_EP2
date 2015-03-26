@@ -62,6 +62,7 @@ def perna2():
 	t.forward(40)
 	t.backward(40)
 	t.left(45)
+
 #variavel_texto = window.textinput("Letra", "Escolha uma letra")	#caixa de texto
 
 t1 = turtle.Turtle()
@@ -103,7 +104,20 @@ while erro < 6:
 		t1.setpos(-170+20*i, -65)
 		t1.pendown()
 		t1.write(v)
-	
+	else:
+		erro +=1
+		if erro == 1:
+			cabeça()
+		if erro == 2:
+			corpo()
+		if erro == 3:
+			braco1()
+		if erro == 4:
+			braco2()
+		if erro == 5:
+			perna1()
+		if erro == 6:
+			perna2()
 		
 
 
