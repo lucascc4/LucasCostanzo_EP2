@@ -75,7 +75,7 @@ palavra = p.readlines()
 
 limpa = []
 for pa in palavra:
-	x = pa.strip()
+	x = pa.strip().lower()
 	if x != "":
 		limpa.append(x)
 
@@ -92,18 +92,39 @@ def traço(palavra):
 			t1.penup()
 			t1.forward(5)
 	
-			
+print(limpa)		
 pc = choice(limpa)
 traço(pc)	#chama a funao de desenho da palavra
 erro = 0
 while erro < 6:
-	v = window.textinput("Letra", "Escolha uma letra")
+	v = window.textinput("Letra", "Escolha uma letra").lower().strip()
 	if v in pc:
-		i = pc.index(v)
-		t1.penup()
-		t1.setpos(-170+20*i, -65)
-		t1.pendown()
-		t1.write(v)
+		for i in range(len(pc)):
+			if v == pc[i]:
+				t1.penup()
+				t1.setpos(-170+20*i, -65)
+				t1.pendown()
+				t1.write(v)
+			elif v=="a" and pc[i] == "ã":
+				t1.penup()
+				t1.setpos(-170+20*i, -65)
+				t1.pendown()
+				t1.write(pc[i])
+			elif v=="o" and pc[i] == "ó":
+				t1.penup()
+				t1.setpos(-170+20*i, -65)
+				t1.pendown()
+				t1.write(pc[i])
+			elif v=="o" and pc[i] == "ô":
+				t1.penup()
+				t1.setpos(-170+20*i, -65)
+				t1.pendown()
+				t1.write(pc[i])
+			elif v=="i" and pc[i] == "í":
+				t1.penup()
+				t1.setpos(-170+20*i, -65)
+				t1.pendown()
+				t1.write(pc[i])
 	else:
 		erro +=1
 		if erro == 1:
