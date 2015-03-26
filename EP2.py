@@ -28,19 +28,18 @@ t.right(90)
 t.forward(200)
 t.right(90)
 t.forward(100)
-window.mainloop()
+
+
 
 def cabeça():
 	t.right(90)	#cabeça
 	t.circle(30)
-	window.mainloop()
 def corpo():
 	t.left(90)	#corpo
 	t.penup()
 	t.forward(60)
 	t.pendown()
 	t.forward(70)
-	window.mainloop()
 def braco1():
 	t.penup()	#braço1
 	t.backward(60)
@@ -48,30 +47,26 @@ def braco1():
 	t.pendown()
 	t.forward(40)
 	t.backward(40)
-	window.mainloop()
 def braco2():
 	t.right(90)	#braço2
 	t.forward(40)
 	t.backward(40)
 	t.left(45)
 	t.forward(60)
-	window.mainloop()
 def perna1():
 	t.left(45)	#perna1
 	t.forward(40)
 	t.backward(40)
-	window.mainloop()
 def perna2():
 	t.right(90)	#perna2
 	t.forward(40)
 	t.backward(40)
 	t.left(45)
-	window.mainloop()
 #variavel_texto = window.textinput("Letra", "Escolha uma letra")	#caixa de texto
 
 t1 = turtle.Turtle()
 t1.speed(30) 
-t1.penup()       # Remova e veja o que acontece
+t1.penup()      
 t1.setpos(-170,-70)
 
 p = open("texto.txt", encoding="utf-8")
@@ -87,7 +82,7 @@ def traço(palavra):
 	for c in palavra:
 		if c ==" ":
 			t1.penup()
-			t1.forward(5)
+			t1.forward(20)
 			t1.pendown()
 			
 		if c !=" ":
@@ -95,11 +90,24 @@ def traço(palavra):
 			t1.forward(15)
 			t1.penup()
 			t1.forward(5)
-	window.mainloop()
-			
+	
 			
 pc = choice(limpa)
-traço(pc)
+traço(pc)	#chama a funao de desenho da palavra
+erro = 0
+while erro < 6:
+	v = window.textinput("Letra", "Escolha uma letra")
+	if v in pc:
+		i = pc.index(v)
+		t1.penup()
+		t1.setpos(-170+20*i, -65)
+		t1.pendown()
+		t1.write(v)
+	
+		
+
+
+window.mainloop()
 
 
 
