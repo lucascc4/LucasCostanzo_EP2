@@ -102,6 +102,7 @@ while b<1:
 			
 		print(limpa)	
 		pc = choice(limpa)
+		limpa.remove(pc)
 		traço(pc)	#chama a funao de desenho da palavra
 		erro = 0
 		acerto = 0
