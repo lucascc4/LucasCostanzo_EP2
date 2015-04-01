@@ -15,13 +15,20 @@ window.bgcolor("red")
 window.title("Jogo Da Forca")
 t = turtle.Turtle()  # Cria um objeto "desenhador"
 t1 = turtle.Turtle()
+p = open("texto.txt", encoding="utf-8")
+palavra = p.readlines()
+limpa = []
+for pa in palavra:
+	x = pa.strip().lower()
+	if x != "":
+		limpa.append(x)
 
 b = 0
 while b<1:
 	z = window.textinput("", "Você deseja jogar?").lower().strip()
 	if z == "sim":
 	
-		t.speed(30) 
+		t.speed(2) 
 		t.penup()       # Remova e veja o que acontece
 		t.setpos(-250,-40)
 		t.pendown()
@@ -40,8 +47,8 @@ while b<1:
 		def cabeça():
 			t.right(90)	#cabeça
 			t.circle(30)
+			t.left(90)
 		def corpo():
-			t.left(90)	#corpo
 			t.penup()
 			t.forward(60)
 			t.pendown()
@@ -53,8 +60,9 @@ while b<1:
 			t.pendown()
 			t.forward(40)
 			t.backward(40)
+			t.right(45)
 		def braco2():
-			t.right(90)	#braço2
+			t.right(45)	#braço2
 			t.forward(40)
 			t.backward(40)
 			t.left(45)
@@ -63,8 +71,9 @@ while b<1:
 			t.left(45)	#perna1
 			t.forward(40)
 			t.backward(40)
+			t.right(45)
 		def perna2():
-			t.right(90)	#perna2
+			t.right(45)	#perna2
 			t.forward(40)
 			t.backward(40)
 			t.left(45)
@@ -75,14 +84,8 @@ while b<1:
 		t1.penup()      
 		t1.setpos(-170,-70)
 		
-		p = open("texto.txt", encoding="utf-8")
-		palavra = p.readlines()
 		
-		limpa = []
-		for pa in palavra:
-			x = pa.strip().lower()
-			if x != "":
-				limpa.append(x)
+
 		
 		def traço(palavra):
 			for c in palavra:
@@ -136,6 +139,8 @@ while b<1:
 						t1.pendown()
 						t1.write(pc[i])
 						acerto += 1
+			elif " " in pc:
+				acerto += 1
 			else:
 				erro +=1
 				if erro == 1:
@@ -152,10 +157,16 @@ while b<1:
 					perna2()
 					
 		z = window.textinput("", "Você deseja jogar novamente?").lower().strip()
-		
+		t.clear()
+		t1.clear()
+		t.penup()
+		t1.penup()
+		t.setpos(0,0)
+		t1.setpos(0,0)
+		t.left(90)
 		if z == "nao":
 			b += 1
-			
+
 		
 window.mainloop()
 	
